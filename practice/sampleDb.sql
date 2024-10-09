@@ -1,3 +1,4 @@
+-- Run the following Queries to setup your sample DB
 CREATE TABLE FoodStallWorker (
 	EmployeeID int,
 	FoodStallID int,
