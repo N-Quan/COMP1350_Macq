@@ -5,10 +5,10 @@
 WITH foodstall_and_employees AS (
 	SELECT FoodStallWorker.EmployeeID, FoodStallWorker.foodstallid, Foodstall.name
 	FROM Foodstall
-	JOIN FoodStallWorker on Foodstall.id=FoodStallWorker.foodstallid
+	JOIN FoodStallWorker ON Foodstall.id=FoodStallWorker.foodstallid
 ), -- b. Create a table with a count of employees for each food stall
 employees_count_table AS (
-	Select FoodStallID, Count(*) as employeeCount
+	SELECT FoodStallID, COUNT(*) AS employeeCount
 	FROM FoodStallWorker
 	GROUP BY FoodStallID
 )
@@ -19,5 +19,5 @@ employees_count_table AS (
 -- To achieve this, Join the two tables we created above
 SELECT DISTINCT foodstall_and_employees.name, employees_count_table.employeeCount
 FROM employees_count_table
-JOIN foodstall_and_employees on foodstall_and_employees.FoodStallID=employees_count_table.FoodStallID
+JOIN foodstall_and_employees ON foodstall_and_employees.FoodStallID=employees_count_table.FoodStallID
 WHERE employees_count_table.employeeCount = 3
